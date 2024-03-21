@@ -10,19 +10,19 @@ export const CityProvider = ({ children }) => {
   const [city, setCity] = useState("");
 
   const apiKey = import.meta.env.VITE_API_KEY;
-  //   const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&cnt=5`
-  const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=berlin&appid=${apiKey}&units=metric&cnt=5`;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&cnt=5`
 
   const fetchWeatherData = async () => {
     try {
       const response = await axios.get(apiUrl);
-      setWeatherData(response.data);
+      const _weatherData = response.data;
+      setWeatherData(_weatherData);
     } catch (error) {
       console.log("Error fetching weather data:", data);
     }
   };
 
   return (
-    <CityContext.Provider value={{ city, setCity, weatherData, setWeatherData}}>{children}</CityContext.Provider>
+    <CityContext.Provider value={{ city, setCity, weatherData, fetchWeatherData}}>{children}</CityContext.Provider>
   )
 };
