@@ -2,7 +2,6 @@ import { Context } from "../CityContext";
 
 function Weather() {
   const { weatherData, city } = Context();
-  console.log(weatherData)
 
   return (
     <div className="rounded-lg mx-4">
